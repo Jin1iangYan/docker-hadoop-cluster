@@ -1,0 +1,44 @@
+<configuration>
+  <!-- JDBC连接URL，用于连接MySQL数据库 -->
+  <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:mysql://mysql:3306/hive?createDatabaseIfNotExist=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</value>
+  </property>
+
+  <!-- JDBC驱动名称 -->
+  <property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>com.mysql.cj.jdbc.Driver</value>
+  </property>
+
+  <!-- 数据库用户名 -->
+  <property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>root</value>
+  </property>
+
+  <!-- 数据库密码 -->
+  <property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>root</value>
+  </property>
+
+  <!-- HiveServer2绑定的主机名 -->
+  <property>
+    <name>hive.server2.thrift.bind.host</name>
+    <value>node1</value>
+  </property>
+
+  <!-- Hive Metastore的URI -->
+  <property>
+    <name>hive.metastore.uris</name>
+    <value>thrift://node1:9083</value>
+  </property>
+
+  <!-- 是否启用Metastore事件通知API的认证 -->
+  <property>
+    <name>hive.metastore.event.db.notification.api.auth</name>
+    <value>false</value>
+  </property>
+
+</configuration>

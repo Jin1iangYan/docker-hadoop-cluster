@@ -1,0 +1,94 @@
+services:
+  mysql:
+    # arm64 use this
+    image: arm64v8/mysql:8.0
+    # amd64 use this
+    # image: mysql:8.0
+    hostname: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: hive
+      MYSQL_CHARACTER_SET_SERVER: utf8mb4
+    networks:
+      - hadoop-net
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: always
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+  node1:
+    build: .
+    hostname: node1
+    container_name: node1
+    stdin_open: true
+    tty: true
+    networks:
+      - hadoop-net
+    environment:
+      - CLUSTER_NAME=hadoop
+    ports:
+      - "2201:22"     # ssh login
+      - "9870:9870"   # namenode web ui
+      - "8088:8088"   # yarn web ui
+      - "9000:9000"   # HDFS NameNode RPC 
+      # 不可用，无法解决
+      # - "8042:8042"   # log server
+      - "10000:10000"   # hive server2
+
+    volumes:
+      - node1:/data
+    command: >
+      sh -c "service ssh start; su - hadoop -c \"bash /home/hadoop/cmd/start.sh\"; bash"
+    depends_on:
+      - mysql
+      - node2
+      - node3
+
+  node2:
+    build: .
+    hostname: node2
+    container_name: node2
+    stdin_open: true
+    tty: true
+    ports:
+      - "2202:22"
+    networks:
+      - hadoop-net
+    environment:
+      - CLUSTER_NAME=hadoop
+    volumes:
+      - node2:/data
+
+  node3:
+    build: .
+    hostname: node3
+    container_name: node3
+    stdin_open: true
+    tty: true
+    ports:
+      - "2203:22"
+    networks:
+      - hadoop-net
+    environment:
+      - CLUSTER_NAME=hadoop
+    volumes:
+      - node3:/data
+
+networks:
+  hadoop-net:
+    external: true
+
+volumes:
+  node1:
+    driver: local
+  node2:
+    driver: local
+  node3:
+    driver: local
+  mysql_data:
+    driver: local

@@ -1,0 +1,27 @@
+<configuration>
+  <!-- 配置默认的文件系统，指定 HDFS 地址 -->
+  <property>
+    <name>fs.defaultFS</name>
+    <value>hdfs://node1:9000</value>
+  </property>
+
+  <!-- 配置 I/O 文件的缓冲区大小，单位为字节 -->
+  <property>
+    <name>io.file.buffer.size</name>
+    <value>131072</value> <!-- 设置为 128 KB -->
+  </property>
+
+  <!-- 配置hive -->
+  <!-- Hive 通常运行在 Hadoop 集群上，代理用户功能允许 Hive 服务以不同用户的身份执行操作 -->
+  <!-- 配置 Hadoop 的代理用户，允许所有主机访问 -->
+  <property>
+    <name>hadoop.proxyuser.hadoop.hosts</name>
+    <value>*</value> <!-- 允许所有主机访问 -->
+  </property>
+
+  <!-- 配置 Hadoop 代理用户的访问权限，允许所有用户组 -->
+  <property>
+    <name>hadoop.proxyuser.hadoop.groups</name>
+    <value>*</value> <!-- 允许所有用户组 -->
+  </property>
+</configuration>

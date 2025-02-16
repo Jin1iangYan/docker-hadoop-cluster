@@ -1,0 +1,5 @@
+Why do programmers prefer dark mode?
+
+Because the light attracts bugs!
+
+This joke plays on the dual meaning of “bugs”—insects attracted to light and software bugs that programmers try to avoid.

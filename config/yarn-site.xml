@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<configuration>
+  <!-- YARN日志服务器的URL -->
+  <property>
+      <name>yarn.log.server.url</name>
+      <value>http://node1:19888/jobhistory/logs</value>
+  </property>
+
+  <!-- 设置YARN Web代理服务器的地址 -->
+  <property>
+      <name>yarn.web-proxy.address</name>
+      <value>node1:8089</value>
+      <description>代理服务器的主机名和端口</description>
+  </property>
+
+  <!-- 启用或禁用日志聚合 -->
+  <property>
+      <name>yarn.log-aggregation-enable</name>
+      <value>true</value>
+      <description>启用或禁用日志聚合</description>
+  </property>
+
+  <!-- 设置远程应用日志存储目录 -->
+  <property>
+      <name>yarn.nodemanager.remote-app-log-dir</name>
+      <value>/tmp/logs</value>
+      <description>远程应用日志目录</description>
+  </property>
+
+  <!-- 配置资源管理器的主机名 -->
+  <property>
+      <name>yarn.resourcemanager.hostname</name>
+      <value>node1</value>
+  </property>
+
+  <!-- 设置YARN资源管理器的调度器类 -->
+  <property>
+      <name>yarn.resourcemanager.scheduler.class</name>
+      <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
+  </property>
+
+  <!-- 设置NodeManager的本地数据存储目录 -->
+  <property>
+      <name>yarn.nodemanager.local-dirs</name>
+      <value>/data/nm-local</value>
+      <description>本地文件系统中存储中间数据的路径</description>
+  </property>
+
+  <!-- 设置NodeManager的日志存储目录 -->
+  <property>
+      <name>yarn.nodemanager.log-dirs</name>
+      <value>/data/nm-log</value>
+      <description>本地文件系统中存储日志的路径</description>
+  </property>
+
+  <!-- 设置NodeManager日志的默认保存时间（秒） -->
+  <property>
+      <name>yarn.nodemanager.log.retain-seconds</name>
+      <value>10800</value>
+      <description>如果禁用日志聚合，NodeManager保存日志的默认时间（秒）</description>
+  </property>
+
+  <!-- 设置NodeManager的辅助服务，例如MapReduce Shuffle服务 -->
+  <property>
+      <name>yarn.nodemanager.aux-services</name>
+      <value>mapreduce_shuffle</value>
+      <description>MapReduce应用所需的Shuffle服务</description>
+  </property>
+</configuration>

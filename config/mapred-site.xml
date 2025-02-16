@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- 在此文件中设置特定于站点的属性覆盖 -->
+
+<configuration>
+  <!-- 设置MapReduce框架的名称，指定使用YARN作为框架 -->
+  <property>
+    <name>mapreduce.framework.name</name>
+    <value>yarn</value>
+    <description>指定MapReduce框架使用YARN</description>
+  </property>
+
+  <!-- 设置JobHistoryServer的地址，通常是JobHistoryServer运行的节点和端口 -->
+  <property>
+    <name>mapreduce.jobhistory.address</name>
+    <value>node1:10020</value>
+    <description>指定JobHistoryServer的地址</description>
+  </property>
+
+  <!-- 设置JobHistoryServer的Web应用地址，通常提供Web UI供查看作业历史 -->
+  <property>
+    <name>mapreduce.jobhistory.webapp.address</name>
+    <value>node1:19888</value>
+    <description>指定JobHistoryServer Web应用的地址</description>
+  </property>
+
+  <!-- 设置存储中间处理结果的目录 -->
+  <property>
+    <name>mapreduce.jobhistory.intermediate-done-dir</name>
+    <value>/data/mr-history/tmp</value>
+    <description>指定中间处理结果目录</description>
+  </property>
+
+  <!-- 设置存储最终完成作业结果的目录 -->
+  <property>
+    <name>mapreduce.jobhistory.done-dir</name>
+    <value>/data/mr-history/done</value>
+    <description>指定最终完成作业结果目录</description>
+  </property>
+
+  <!-- 设置MapReduce应用的环境变量，传递HADOOP_MAPRED_HOME -->
+  <property>
+    <name>yarn.app.mapreduce.am.env</name>
+    <value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
+    <description>设置MapReduce应用环境变量</description>
+  </property>
+
+  <!-- 设置MapReduce映射任务的环境变量，传递HADOOP_MAPRED_HOME -->
+  <property>
+    <name>mapreduce.map.env</name>
+    <value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
+    <description>设置MapReduce映射任务的环境变量</description>
+  </property>
+
+  <!-- 设置MapReduce规约任务的环境变量，传递HADOOP_MAPRED_HOME -->
+  <property>
+    <name>mapreduce.reduce.env</name>
+    <value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
+    <description>设置MapReduce规约任务的环境变量</description>
+  </property>
+</configuration>

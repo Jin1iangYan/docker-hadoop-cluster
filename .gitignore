@@ -1,0 +1,14 @@
+# macOS metadata files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS folder attributes
+Icon?
+._*
+
+# macOS Finder attributes
+.Spotlight-V100
+.Trashes
+
+/.idea
