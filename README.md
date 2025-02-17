@@ -52,15 +52,15 @@ A containerized Hadoop ecosystem featuring HDFS, YARN, MapReduce, and Hive, pre-
    docker-compose build
    ```
 
-	3.	Launch Cluster:
-   ```bash
-   docker-compose up -d
-   ```
+3.	Launch Cluster:
+  ```bash
+  docker-compose up -d
+  ```
 
-	4.	Verify Services:
-   ```bash
-   docker-compose ps
-   ```
+4.	Verify Services:
+  ```bash
+  docker-compose ps
+  ```
 
 ## Usage
 
